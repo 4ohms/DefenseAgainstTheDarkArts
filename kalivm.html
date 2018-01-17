@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="stylesheets/style.css" />
+<title>COMP 116: Introduction to Computer Security</title>
+</head>
+
+<body>
+<h1>COMP 116: Introduction to Computer Security</h1>
+<h2>A Hypervisor and the Kali Linux Virtual Machine</h2>
+
+<p>Throughout this course, you <em>should</em> do most of your work on a virtual machine.  A virtual machine (VM) is a software computer that, like a physical computer, runs an operating system and applications.  Say that your laptop runs macOS, you can run a version of Windows as a virtual machine (the "guest") on top of macOS (the "host").  The value of using a virtual machine is logically separation between machines.  Theoretically, a virtual machine is isolated from the host.  That is, mistakes made on a guest (e.g., malware) will not escape to host --with a few exceptions including file sharing between host and virtual machine.  To run a virtual machine, you will need a hypervisor, also known as a Virtual Machine Manager (VMM).  Hypervisors also provide a very handy feature: taking snapshots of running virtual machine, and rolling back to a snapshot when necessary (i.e., when mistakes are made).</p>
+
+<h2>Instructions</h2>
+<p>1. Download a hypervisor software.  Options:</p>
+<ul>
+	<li><a href="https://www.virtualbox.org/" target="_blank">VirtualBox (https://www.virtualbox.org/)</a>: Free and open source</li>
+	<li>VMware Fusion for macOS or VMware Workstation for Windows or Linux</a>:  Despite being a commercial product, VMware is known for its performance and features.  You can get a free one year license via Tufts CS at <a href="https://vmap-tufts.onthehub.com/WebStore/Welcome.aspx" target="_blank">https://vmap-tufts.onthehub.com/WebStore/Welcome.aspx</a></li>
+</ul>
+<p>Other hypervisor software options include Parallels for macOS (commercial), and QEMU (free and open source).</p>
+
+<p>2. Download a premade 64-bit Kali Linux VM from <a href="http://www.cs.tufts.edu/comp/116/KaliVM.zip">http://www.cs.tufts.edu/comp/116/KaliVM.zip</a> (1.5 GB).  You will need to unzip the package.  This virtual machine can be used on either VirtualBox or VMware Fusion / Workstation.  This VM has Kali Linux installed as well as the tools that you will be using for this class (e.g., Wireshark, nmap, ettercap, etc).  Files and actions done inside the VM will stay persistent inside of the VM unlike the live ISO option where everything is saved to RAM.  Username is <code>root</code> (so yes, superuser or admin).  Password is <code>toor</code>.</p>
+
+<p><em>Important note: the premade Kali VM does NOT have <code>open-vm-tools-desktop</code> or VirtualBox Guest Additions preinstalled so you can drag-and-drop files between your VM (guest) and your host (main computer) or share clipboard, cut-and-paste between guest and host.</em></p>
+
+<p>3. Make sure that networking (i.e., Internet access) is available on your host.  Turn on the virtual machine.</p>
+
+<p>4. Play around with the environment.</p>
+
+<p>5. Install the VM tools in the Kali VM for your respective hypervisor so you can drag-and-drop files between your VM (guest) and your host (main computer) or share clipboard, cut-and-paste between guest and host.</p>
+<ul>
+	<li>If you are using VirtualBox, install VirtualBox Guest Additions for Kali Linux via: <code>apt-get update ; apt-get install -y virtualbox-guest-x11</code>, then reboot the VM (source: <a href="https://docs.kali.org/general-use/kali-linux-virtual-box-guest" target="_blank">https://docs.kali.org/general-use/kali-linux-virtual-box-guest</a>)</li>
+	<li>If you are using VMware, install <code>open-vm-tools</code> via: <code>apt-get update ; apt-get install -y open-vm-tools-desktop fuse</code>, then reboot the VM (source: <a href="https://docs.kali.org/general-use/install-vmware-tools-kali-guest" target="_blank">https://docs.kali.org/general-use/install-vmware-tools-kali-guest</a>)</li>
+</ul>
+
+<h2>Why is using a Kali VM not mandatory for this class and thus strongly recommended? (notice: I wrote "you <em>should</em> do most of your work on a virtual machine")</h2>
+<ol>
+	<li>Accessibility. For students who are visually impaired, using a virtual machine can be very difficult.</li>
+	<li>Not all students have a capable laptop.  Sometimes due to financial reasons, some students use Chromebooks.</li>
+	<li>Performance.  Sometimes, using a VM can be very slow.  A VM also do not use native drivers (e.g., for networking).</li>
+</ol>
+
+<h2>References</h2>
+<ol>
+<li><a href="http://www.howtogeek.com/66734/htg-explains-what-is-a-hypervisor/" target="_blank">http://www.howtogeek.com/66734/htg-explains-what-is-a-hypervisor/</a></li>
+<li><a href="https://security.stackexchange.com/questions/9011/does-a-virtual-machine-stop-malware-from-doing-harm" target="_blank">https://security.stackexchange.com/questions/9011/does-a-virtual-machine-stop-malware-from-doing-harm</a></li>
+</ol>
