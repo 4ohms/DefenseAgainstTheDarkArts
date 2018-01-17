@@ -5,16 +5,23 @@
 * What this course is NOT
 * What this course IS and expectations
 * The schtick is very different in this course, and this may be arguably the most "different" course you will take in the CS curriculum
-* Terminology: Is it Computer Security?  Is it Information Security (infosec)?  Is it Cyber Security?
 * The definition of security in the context of technology, information, computers
+* Terminology: Is it Computer Security?  Is it Information Security (infosec)?  Is it Cyber Security?
 * Why study security?
 	- So how far have we come? (or lack thereof)
 	- The Tacoma Bridge Failure https://www.youtube.com/watch?v=XggxeuFDaDU
 * One outcome of this course: question and debate everything
 * What's my ultimate goal for you in this course?  We'll revisit this on the last day of class.
-* Technology requirement for this class: virtual machine (we will use VirtualBox) and Kali Linux
+* The basics you all absolutely need to have: experience and comfort with the command line
+  - Why? Versatility, productivity, accessibility, scripting
+  - Not everything can be accomplished by fancy graphics and GUIs (sometimes constrained to certain features too)
+  - Many systems do not use a windows manager or have a graphical desktop interface (e.g., servers)
+    - Graphical interface (especially on servers) => more software requirements, more overhead, more bloat, more vulnerabilities
+  - Many security tools are command line based
+  - Remote execution of commands
+* Technology requirements for this class: Git, a hypervisor, and Kali Linux
 
-# Thursday, September 7th: Networking 101
+# Tuesday, January 23th: Networking 101
 * The really hard problems in Security
 	- Sexual harassment and gender
 	- Attribution
