@@ -25,11 +25,17 @@
 
 <p><em>Important note: the premade Kali VM does NOT have <code>open-vm-tools-desktop</code> or VirtualBox Guest Additions preinstalled so you can drag-and-drop files between your VM (guest) and your host (main computer) or share clipboard, cut-and-paste between guest and host.</em></p>
 
-<p>3. Make sure that networking (i.e., Internet access) is available on your host.  Turn on the virtual machine.</p>
+<p>3. Unzip the contents of the <code>KaliVM.zip</code> file.</p>
 
-<p>4. Play around with the environment.</p>
+<p>3A. If you are using VirtualBox, open the VM via Go to Machine > Add and find the <code>Kali Linux.vbox</code> file that is in the unzipped folder. <img src="images/kalivm-virtualbox.png" alt="Opening VM in VirtualBox" /></p>
 
-<p>5. Install the VM tools in the Kali VM for your respective hypervisor so you can drag-and-drop files between your VM (guest) and your host (main computer) or share clipboard, cut-and-paste between guest and host.</p>
+<p>3B. If you are using VMware Fusion or Workstation, open the VM via File > Open and open highlighted file in the unzipped folder. <img src="images/kalivm-vmware.png" alt="Opening VM in VMware" /></p>
+
+<p>4. Make sure that networking (i.e., Internet access) is available on your host.  Turn on the virtual machine.</p>
+
+<p>5. Play around with the environment.</p>
+
+<p>6. Install the VM tools in the Kali VM for your respective hypervisor so you can drag-and-drop files between your VM (guest) and your host (main computer) or share clipboard, cut-and-paste between guest and host.</p>
 <ul>
 	<li>If you are using VirtualBox, install VirtualBox Guest Additions for Kali Linux via: <code>apt-get update ; apt-get install -y virtualbox-guest-x11</code>, then reboot the VM (source: <a href="https://docs.kali.org/general-use/kali-linux-virtual-box-guest" target="_blank">https://docs.kali.org/general-use/kali-linux-virtual-box-guest</a>)</li>
 	<li>If you are using VMware, install <code>open-vm-tools</code> via: <code>apt-get update ; apt-get install -y open-vm-tools-desktop fuse</code>, then reboot the VM (source: <a href="https://docs.kali.org/general-use/install-vmware-tools-kali-guest" target="_blank">https://docs.kali.org/general-use/install-vmware-tools-kali-guest</a>)</li>
@@ -41,6 +47,23 @@
 	<li>Not all students have a capable laptop.  Sometimes due to financial reasons, some students use Chromebooks.  The tools required for this course can be installed natively on macOS, Windows, and Linux.</li>
 	<li>Performance.  Sometimes, using a VM can be very slow.  A VM also do not use native drivers (e.g., for networking).</li>
 </ol>
+
+<h2>Troubleshooting</h2>
+<p><strong>The problem: you receive the following error in VMware or something similar in VirtualBox:</strong> <code>Binary translation is incompatible with long mode on this platform. Long mode will be disabled in this virtual environment and applications requiring long mode will not function properly as a result. See http://vmware.com/info?id=152 for more details.</code> or <code>This virtual machine is configured for 64-bit guest operating systems. However, 64-bit operation is not possible.</code> or <code>This host supports Intel VT-x, but Intel VT-x is disabled.</code>
+</pre>
+<p><strong>The solution: You have to enable virtualization on your computer's BIOS.</strong></p>
+
+<p>tl;dr Searching for "enable virtualization on [insert your computer model here]" can be very helpful because the steps are often different for different computer models. It will likely involve turning off the computer, turning it on while holding a key (e.g. the escape key), and then switching a menu item.</p>
+
+<p>On many machines, how you get into your computer's BIOS is this:</p>
+<ol>
+<li>Restart your computer.</li>
+<li>Within *the first few seconds of boot* on your computer, press a key.  F2 or ESC are common.</li>
+<li>Go to System Configuration > Device Configuration or similar</li>
+<li>Check the enable VT-x</li>
+</ol>
+<p>More: <a href="https://superuser.com/questions/593973/this-virtual-machine-is-configured-for-64-bit-guest-operating-systems-however" target="_blank">https://superuser.com/questions/593973/this-virtual-machine-is-configured-for-64-bit-guest-operating-systems-however</a></p>
+<p>On newer machines and Windows 10, the process may be different: <a href="http://www.dell.com/support/article/us/en/19/sln143038/access-uefi--bios--system-setup-from-windows-on-your-dell-system" target="_blank">http://www.dell.com/support/article/us/en/19/sln143038/access-uefi--bios--system-setup-from-windows-on-your-dell-system</a></p>
 
 <h2>References</h2>
 <ol>
