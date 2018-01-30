@@ -42,20 +42,35 @@
 * A packet: contains implementations of all the protocol layers; encapsulation model
 * A PCAP: a file of packet captures from a network
 
-# Thursday, January 25th: Sniffing
-* The next lab
-* So you may be curious: how did we capture all those packets?
+# Thursday, January 25th: Basic Packet Analysis
+* Last class: OSI model, a packet, PCAP
+* simple.pcap
+* Things that you can do with PCAP files
+  - Visualizing the traffic; see which computer is communicating with who
+  - Troubleshoot network problems
+  - See if there is any malicious traffic or malware
+  - Reconstruct files (e.g., images) and conversations
+  - Rip out any username:password pairs sent-in-the-clear
 * The Wall of Sheep
+* Ettercap
+* The next lab
+
+# Tuesday, January 30th: Sniffing
+* Last class: we delved into basic packet analysis
+  - Visualized network at a given time using Etherape
+  - Extracted all images in PCAP using Driftnet
+  - Filter packets by IP address in Wireshark
+  - Extract username:password pairs sent in plaintext on the network using Ettercap
+  - Reconstructed a conversation in Wireshark via show TCP stream
+* Recent news: Tinder
+* An almost ugly spat: https://twitter.com/0xmchow/status/941145910213562369
+* So you may be curious: how did we at the Wall of Sheep capture all those packets?
 * tcpdump, Wireshark, ettercap
 * Two types of networks:
   1. Unswitched - packets flow through all devices on network but you look at only the packets addressed to you......
     - Welp... http://superuser.com/questions/191191/where-can-i-find-an-unswitched-ethernet-hub
-  2. Switched - packets flow through specific devices on network
-* Promiscuous mode
-* Preventing sniffing:
-  1. Use encryption and encrypted network protocols
-  2. VPN
-  3. Use switched network......?
+  2. Switched - packets flow through specific devices on network (most networks now)
+* Step 1: promiscuous mode
 * LAN Tap: http://hakshop.myshopify.com/products/throwing-star-lan-tap-pro
 * Address Resolution Protocol
   - IP address to MAC address on a network
@@ -66,8 +81,12 @@
 * ARP spoofing or ARP poisoning
 * Bettercap
 * Video: https://www.youtube.com/watch?v=9uiA6dGuEE0
+* Preventing sniffing:
+  1. Use encryption and encrypted network protocols
+  2. VPN
+  3. Use switched network......?
 
-# Tuesday, January 30th: Scanning
+# Thursday, February 1st: Scanning
 * Last class: sniffing unswitched and switched networks
 * Is sniffing still relevant today?
 * Preventing sniffing on switched network:
