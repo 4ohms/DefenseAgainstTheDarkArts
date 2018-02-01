@@ -81,15 +81,15 @@
 * ARP spoofing or ARP poisoning
 * Bettercap
 * Video: https://www.youtube.com/watch?v=9uiA6dGuEE0
-* Preventing sniffing:
-  1. Use encryption and encrypted network protocols
-  2. VPN
-  3. Use switched network......?
 
 # Thursday, February 1st: Scanning
 * Last class: sniffing unswitched and switched networks
 * Is sniffing still relevant today?
-* Preventing sniffing on switched network:
+* Preventing sniffing:
+  1. Use encryption and encrypted network protocols
+  2. VPN
+  3. Use switched network......?
+* Preventing ARP poisoning on switched network:
   - anti-arpspoof
   - ArpON
   - Antidote
