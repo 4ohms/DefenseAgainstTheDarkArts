@@ -104,16 +104,15 @@
 * Is scanning still relevant today?
 * Basic method: ping sweep
 * Problems with ping?
-* Geographical information: SHODAN
 
-# Thursday, February 1st, Part II
-* Last class: the idea of scanning, ping and ping sweep, SHODAN...
+# Tuesday, February 6th, Part II
+* Last class: the idea of scanning, ping, Netcat...
 * Think poking holes, "ask questions"
 * Poking holes => finding interesting and unwanted stuff on networks
   - https://pen-testing.sans.org/blog/2017/02/28/opening-a-can-of-active-defense-and-cyber-deception-to-confuse-and-frustrate-attackers
-* Internal network in VirtualBox
 * Netcat
 * Nmap
+* Geographical information: SHODAN
 * What could possibly go wrong?
 * Want to be stealthy!
 * RFC 793: if ports are closed and you send "junk" to it, RST packet will be sent! (page 65 of https://tools.ietf.org/html/rfc793)
@@ -121,7 +120,7 @@
   - NULL scan: `sudo nmap -sN ...`
   - XMAS scan: `sudo nmap -sX ...`, # FIN, PSH, URG flags in packet
 
-# Tuesday, February 5th: Distributed Denial of Service (DDoS) Attacks
+# Thursday, February 8th: Distributed Denial of Service (DDoS) Attacks
 * Last class: the stealthy scans
 * Decoy:
   - `sudo nmap -D...`
