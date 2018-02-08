@@ -113,25 +113,25 @@
 * Netcat
 * Nmap
 * Geographical information: SHODAN
+
+# Thursday, February 8th: Distributed Denial of Service (DDoS) Attacks
+* "Inexperienced users and script kiddies, on the other hand, try to solve every problem with the default SYN scan. Since Nmap is free, the only barrier to port scanning mastery is knowledge. That certainly beats the automotive world, where it may take great skill to determine that you need a strut spring compressor, then you still have to pay thousands of dollars for it... By default, Nmap performs a SYN Scan, though it substitutes a connect scan if the user does not have proper privileges to send raw packets (requires root access on Unix). Of the scans listed in this section, unprivileged users can only execute connect and FTP bounce scans." https://nmap.org/book/man-port-scanning-techniques.html
+* Defending against scanners
+  - No certain way
+  - Firewalls?
+  - Close services
+  - Packet filtering
 * What could possibly go wrong?
 * Want to be stealthy!
 * RFC 793: if ports are closed and you send "junk" to it, RST packet will be sent! (page 65 of https://tools.ietf.org/html/rfc793)
   - FIN scan: `sudo nmap -sF ...`
   - NULL scan: `sudo nmap -sN ...`
   - XMAS scan: `sudo nmap -sX ...`, # FIN, PSH, URG flags in packet
-
-# Thursday, February 8th: Distributed Denial of Service (DDoS) Attacks
-* Last class: the stealthy scans
 * Decoy:
   - `sudo nmap -D...`
   - spoofed connections
   - Must use real + alive IP address, else SYN flood
 * Rob Graham's Masscan
-* Defending against scanners
-  - No certain way
-  - Firewalls?
-  - Close services
-  - Packet filtering
 * The first "D" (Distributed) in DDoS: attack source is more than one, often thousands of, unique IP addresses
 * SYN flood
   - The idea: exhaust states in the TCP/IP stack
