@@ -114,7 +114,7 @@
 * Nmap
 * Geographical information: SHODAN
 
-# Thursday, February 8th: Distributed Denial of Service (DDoS) Attacks
+# Thursday, February 8th, Tuesday, Febraury 13th: Distributed Denial of Service (DDoS) Attacks
 * "Inexperienced users and script kiddies, on the other hand, try to solve every problem with the default SYN scan. Since Nmap is free, the only barrier to port scanning mastery is knowledge. That certainly beats the automotive world, where it may take great skill to determine that you need a strut spring compressor, then you still have to pay thousands of dollars for it... By default, Nmap performs a SYN Scan, though it substitutes a connect scan if the user does not have proper privileges to send raw packets (requires root access on Unix). Of the scans listed in this section, unprivileged users can only execute connect and FTP bounce scans." https://nmap.org/book/man-port-scanning-techniques.html
 * Defending against scanners
   - No certain way
