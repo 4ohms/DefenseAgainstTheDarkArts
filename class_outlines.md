@@ -168,4 +168,35 @@
   - Reference 1: https://www.us-cert.gov/ncas/alerts/TA13-088A
   - Reference 2: https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack/
   - Case study from last week: Brian Krebs http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/
+  - Mirai: https://vinceinthebay.files.wordpress.com/2017/02/rsac-slides-hta-w10-mirai-1.pdf
 * How easy it is to spoof packets? I want to introduce you to Scapy......
+* Scapy example 1: to make a DNS query: https://gist.github.com/thepacketgeek/6928674
+* Scapy example 2: spoofing packets (Ping)
+  - `packet = IP(src="",dst="")/ICMP()`
+  - `sr1(packet)`
+
+# Tuesday, February 15th: Crypto, Part I
+* Last week: DDoS and amplification attacks => spoofing packets => Scapy
+* About set3.pcap on the PCAPs lab:
+  - A goal of this class: recognition and mindset
+  - Base64: binary-to-text encoding scheme.  That is: binary data to ASCII
+  - http://stackoverflow.com/questions/6916805/why-does-a-base64-encoded-string-have-an-sign-at-the-end
+  - Why? Dangers in printing payload: https://unix.stackexchange.com/questions/73713/how-safe-is-it-to-cat-an-arbitrary-file
+  - Why? Basic authentication on web. Example: https://github.com/LiamRandall/BsidesDC-Training/blob/master/http-auth/http-basic-auth-multiple-failures.pcap
+* About that server in scanning lab...
+* Encoding vs encryption: they are not the same
+  - Encoding: "The purpose of encoding is to transform data so that it can be properly (and safely) consumed by a different type of system. The goal is not to keep information secret, but rather to ensure that it’s able to be properly consumed."
+  - Encryption: "to transform data in order to keep it secret from others, e.g. sending someone a secret letter that only they should be able to read, or securely sending a password over the Internet. Rather than focusing on usability, the goal is to ensure the data cannot be consumed by anyone other than the intended recipient(s)."
+  - Source: https://danielmiessler.com/study/encoding-encryption-hashing-obfuscation/
+* This week: crypto, the foundation of Computer Security
+* The golden rule: "Never Roll Your Own Crypto"
+* Crypto algorithms: symmetric, hash functions, asymmetric
+* Tradeoffs to consider:
+  - Cost of breaking a cipher
+  - Value of the information that is encrypted
+  - Time required to break info
+  - Lifetime of information?
+* The only secure crypto algorithm: One-Time Pad
+  - Video: https://www.khanacademy.org/computing/computer-science/cryptography/crypt/v/one-time-pad
+* Symmetric algorithms: DES, AES, RC4. What do they provide in terms of security? What do they not provide?
+* One way hash functions: MD5, SHA-1.  What do they provide in terms of security? What do they not provide?
