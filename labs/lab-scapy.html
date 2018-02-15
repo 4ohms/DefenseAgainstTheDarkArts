@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+<title>COMP 116: Introduction to Computer Security - Lab: Python and Scapy</title>
+</head>
+
+<body>
+<h1>COMP 116: Introduction to Computer Security</h1>
+<h2>Lab: Python and Scapy</h2>
+<h2>Due: Thursday, March 8th</h2>
+
+<p class="note">This lab is worth 33 points.  You must complete this lab individiually, on your own.</p>
+
+<h2>Objectives</h2>
+<ol>
+	<li>Practice using Python.</li>
+	<li>Delve into the cyber attribution problem.</li>
+	<li>Learn how to parse and dissect network packets programmatically (using Python and <code>scapy</code>).</li>
+	<li>Write a tool to analyze a live stream or a set of network packets for incidents.</li>
+</ol>
+
+<h2>Overview</h2>
+
+<p>Being proficient in programming is an essential skill to have as a cyber security practitioner.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">For me, it&#39;s more than invaluable, it&#39;s essential.</p>&mdash; Jeremiah Grossman (@jeremiahg) <a href="https://twitter.com/jeremiahg/status/875111993463644160">June 14, 2017</a></blockquote>
+
+<h2>Part 1: Hunting Script Kiddies (10 points)</h2>
+
+<p>The following is a real web server access log from January 31, 2018 to February 7, 2018: <a href="http://www.cs.tufts.edu/comp/116/access.log">access.log</a></p>
+
+<p>Write a Python program <code>log_analysis.py</code> that:</p>
+
+<ol>
+<li>Opens up the log file (assume access log is named <code>access.log</code>).</li>
+<li>For each line that references phpMyAdmin (a free and open source administration tool for MySQL and MariaDB --and notoriously vulnerable), note the IP address.</li>
+<li>For each noted IP address, identify the country of origin.</li>
+<li>Display on terminal list of countries with count of number of suspect IP addresses, sorted in descending order by count.</li>
+</ol>
+<p>You are welcome to use third party Python libraries but you must list all external Python packages in a <code>requirements.txt</code> file so I can install them via <code>pip</code>.</p>
+<p class="note">No credit if you program crashes or if exceptions are not handled properly.</p>
+
+<h2>Part 2: The Incident Alarm (20 points)</h2>
+
+<p>"Scapy is a Python module created by Philippe Biondi that allows extensive packet manipulation. Scapy allows packet forgery, sniffing, PCAP reading/writing, and real-time interaction with network targets. Scapy can be used interactively from a Python prompt or built into scripts and programs" (from <a href="https://blogs.sans.org/pen-testing/files/2016/04/ScapyCheatSheet_v0.2.pdf" target="_blank">The SANS Institute's Scapy Cheat Sheet)</a>.</p>
+
+<p>Scapy and Python 2.7 are installed on Kali Linux.</p>
+
+<p>We have covered a number of network scanning techniques, and you practiced finding sensitive information in PCAP files in the previous lab.  This time, you will apply your knowledge to write a tool that provides notification of incidents via a live stream of network packets or via a set of packets in a PCAP file.</p>
+
+<p>Using Python and <code>scapy</code>, write a program named <code>alarm.py</code> that provides user the option to analyze a live stream of network packets or a set of PCAPs for incidents.  Your tool shall be able to analyze for the following incidents:</p>
+<ol>
+	<li>The stealthy Nmap scans: NULL scan, FIN scan, and XMAS scan</li>
+	<li>Usernames and passwords sent in-the-clear</li>
+	<li>Nikto scan</li>
+	<li>Someone scanning for Shellshock vulnerability. For background reading on the Shellshock bug, read <a href="https://www.troyhunt.com/everything-you-need-to-know-about2/" target="_blank">https://www.troyhunt.com/everything-you-need-to-know-about2/</a> and <a href="https://blog.cloudflare.com/inside-shellshock/" target="_blank">https://blog.cloudflare.com/inside-shellshock/</a></li>
+	<li>MEGABONUS: detect cryptocurrency miner JavaScript</li>
+</ol>
+
+<p>If an incident is detected, alert must be displayed in the format:</p>
+<p><code>ALERT #{incident_number}: #{incident} is detected from #{source IP address} (#{protocol or port number}) (#{payload or loot})!</code></p>
+<p>Example outputs:</p>
+<ol>
+	<li><code>ALERT #1: XMAS scan is detected from 192.168.1.3 (TCP)!</code></li>
+	<li><code>ALERT #2: Username and password sent in-the-clear from 192.168.1.3 (TCP) (dmoyes:IAmAFootballGenius)!</code></li>
+</ol>
+<p>Your program does not need to support saving the stream of packets to a PCAP file or saving a record of detected incidents.</p>
+<p class="note">You are not allowed to use any external Python libraries except for <code>scapy</code>.  No credit if you program crashes or if exceptions are not handled properly.</p>
+
+<h2>Running and Using the Tool</h2>
+<p>In Kali Linux and assuming you are <code>root</code>, run: <code>python alarm.py</code>.  By default with no arguments, the tool shall sniff on network interface <code>eth0</code>.  The tool must handle three command line arguments:</p>
+<ol>
+	<li><code>-i <em>INTERFACE</em></code>: Sniff on a specified network interface</li>
+	<li><code>-r <em>PCAPFILE</em></code>: Read in a PCAP file</li>
+	<li><code>-h</code>: Display message on how to use tool</li>
+</ol>
+<p>Example 1: <code>python alarm.py -h</code> shall display something of the like:</p>
+<pre>
+usage: alarm.py [-h] [-i INTERFACE] [-r PCAPFILE]
+
+A network sniffer that identifies basic vulnerabilities
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -i INTERFACE  Network interface to sniff on
+  -r PCAPFILE   A PCAP file to read
+</pre>
+
+<p>Example 2: <code>python alarm.py -r set3.pcap</code> will read the packets from <code>set3.pcap</code> from the <a href="lab-pcaps.html">PCAPs lab</a>.</p>
+
+<p>Example 3: <code>python alarm.py -i eth0</code> will sniff packets on a wireless interface <code>eth0</code></p>
+
+<p>When sniffing on a live interface, the tool must keep running.  To quit it, press Control-C</p>
+
+<h2>Testing Your Tool</h2>
+<p>Your tool must be able to detect the usernames and passwords sent in-the-clear in <code><a href="http://www.cs.tufts.edu/comp/116/set1.pcap">set1.pcap</a></code>, <code><a href="http://www.cs.tufts.edu/comp/116/set2.pcap">set2.pcap</a></code>, and <code><a href="http://www.cs.tufts.edu/comp/116/set3.pcap">set3.pcap</a></code> from the PCAPs lab.</p>
+
+<h2>References</h2>
+<ul>
+	<li><a href="https://docs.python.org/2.7/tutorial/" target="_blank">Official Python tutorial (Python 2.7)</a></li>
+	<li>List of all the standard built-in Python libraries: <a href="https://docs.python.org/2.7/library/index.html" target="_blank">https://docs.python.org/2.7/library/index.html</a></li>
+	<li><a href="http://www.secdev.org/projects/scapy/doc/usage.html" target="_blank">Scapy documentation (secdev.org)</a></li>
+	<li><a href="http://scapy.readthedocs.io/en/latest/" target="_blank">Scapy documentation (via Read the Docs)</a></li>
+	<li><a href="https://bt3gl.github.io/black-hat-python-infinite-possibilities-with-the-scapy-module.html" target="_blank">Black Hat Python: Infinite Possibilities with the Scapy Module (GitHub)</a></li>
+	<li><a href="https://blogs.sans.org/pen-testing/files/2016/04/ScapyCheatSheet_v0.2.pdf" target="_blank">Scapy Cheat Sheet (SANS Institute)</a></li>
+</ul>
+
+<h2 id="readme">The <code>README</code> File</h2>
+<p>Every lab shall include a <code>README</code> file that describes the work. This description must:</p>
+<ul>
+<li>Identify what aspects of the work have been correctly implemented and what have not.</li>
+	<li>Identify anyone with whom you have collaborated or discussed the lab.</li>
+	<li>Say approximately how many hours you have spent completing the lab.</li>
+	<li>Be written in either text format (<code>README.txt</code>) or in Markdown (<code>README.md</code>). No other formats will be accepted.</li>
+</ul>
+<p>For this lab, you must also address the following questions:</p>
+<ol>
+	<li>Are the heuristics used in this lab to determine incidents "even that good"?</li>
+	<li>If you have spare time in the future, what would you add to the program or do differently <em>with regards to detecting incidents</em>?</li>
+</ol>
+<p>This <code>README</code> file must be directly in the folder of the lab.</p>
+
+<h2>Submission</h2>
+<p>Submit <code>README.txt</code> or <code>README.md</code> and your source code files <code>log_analysis.py</code>, <code>requirement.txt</code> (if necessary), and <code>alarm.py</code> on Trunk.</p>
+
+<h2>Assessment</h2>
+<ul>
+	<li>(3 points) README</li>
+	<li>(10 total points) Part 1: <code>log_analysis.py</code></li>
+	<li>(20 total points) Part 2:
+		<ul>
+			<li>(9 points) Detection stealth scans: FIN scan, XMAS scan, and NULL scan</li>
+			<li>(5 points) Detection of credentials sent-in-the-clear (cleartext)</li>
+			<li>(3 points) Detection of Nikto scan</li>
+			<li>(3 points) Detection of someone scanning for Shellshock</li>
+		</ul>
+	</li>
+</ul>
+
+</body>
+</html>
