@@ -176,19 +176,24 @@
   - `sr1(packet)`
 
 # Tuesday, February 15th: Crypto, Part I
-* Last week: DDoS and amplification attacks => spoofing packets => Scapy
+* This week and next week: crypto, the foundation of Computer Security
+* Before we go into crypto, two things
+* About that server target in scanning lab...
+* Encoding vs encryption: they are not the same
+  - Encoding: "The purpose of encoding is to transform data so that it can be properly (and safely) consumed by a different type of system. The goal is not to keep information secret, but rather to ensure that it’s able to be properly consumed."
+  - Encryption: "to transform data in order to keep it secret from others, e.g. sending someone a secret letter that only they should be able to read, or securely sending a password over the Internet. Rather than focusing on usability, the goal is to ensure the data cannot be consumed by anyone other than the intended recipient(s)."
+  - Source: https://danielmiessler.com/study/encoding-encryption-hashing-obfuscation/
+* About that peculiar port on the honeypot...
 * About set3.pcap on the PCAPs lab:
   - A goal of this class: recognition and mindset
   - Base64: binary-to-text encoding scheme.  That is: binary data to ASCII
   - http://stackoverflow.com/questions/6916805/why-does-a-base64-encoded-string-have-an-sign-at-the-end
   - Why? Dangers in printing payload: https://unix.stackexchange.com/questions/73713/how-safe-is-it-to-cat-an-arbitrary-file
   - Why? Basic authentication on web. Example: https://github.com/LiamRandall/BsidesDC-Training/blob/master/http-auth/http-basic-auth-multiple-failures.pcap
-* About that server in scanning lab...
-* Encoding vs encryption: they are not the same
-  - Encoding: "The purpose of encoding is to transform data so that it can be properly (and safely) consumed by a different type of system. The goal is not to keep information secret, but rather to ensure that it’s able to be properly consumed."
-  - Encryption: "to transform data in order to keep it secret from others, e.g. sending someone a secret letter that only they should be able to read, or securely sending a password over the Internet. Rather than focusing on usability, the goal is to ensure the data cannot be consumed by anyone other than the intended recipient(s)."
-  - Source: https://danielmiessler.com/study/encoding-encryption-hashing-obfuscation/
-* This week: crypto, the foundation of Computer Security
+* Last week: DDoS and amplification attacks => spoofing packets => Scapy
+* So far, you have been using tools like Ettercap, Nmap, Wireshark.  Now, you must learn how they work!
+* The Python / Scapy lab
+* So now crypto...
 * The golden rule: "Never Roll Your Own Crypto"
 * Crypto algorithms: symmetric, hash functions, asymmetric
 * Tradeoffs to consider:
