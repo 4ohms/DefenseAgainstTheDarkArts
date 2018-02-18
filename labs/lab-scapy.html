@@ -69,8 +69,8 @@
 </ol>
 <p>Your program does not need to support saving the stream of packets to a PCAP file or saving a record of detected incidents.</p>
 <p class="note">You are not allowed to use any external Python libraries except for <code>scapy</code>.  No credit if you program crashes or if exceptions are not handled properly.</p>
-
-<h2>Running and Using the Tool</h2>
+ 
+<h3>Running and Using the Tool</h3>
 <p>In Kali Linux and assuming you are <code>root</code>, run: <code>python alarm.py</code>.  By default with no arguments, the tool shall sniff on network interface <code>eth0</code>.  The tool must handle three command line arguments:</p>
 <ol>
 	<li><code>-i <em>INTERFACE</em></code>: Sniff on a specified network interface</li>
@@ -95,10 +95,18 @@ optional arguments:
 
 <p>When sniffing on a live interface, the tool must keep running.  To quit it, press Control-C</p>
 
-<h2>Testing Your Tool</h2>
+
+<h3>Getting Started</h3>
+<p>Here is a working <code>alarm.py</code>: <a href="https://gist.github.com/mchow01/f0f498f29d2b3bd095b8c93172c6ecf7" target="_blank">https://gist.github.com/mchow01/f0f498f29d2b3bd095b8c93172c6ecf7</a></p>
+
+<p>What has been written for you: the handling and parsing of command line arguments, reading of PCAP file, and sniffing of network.  Download and use inside of your Kali VM.  You will also need to install <code>pcapy</code> to work in conjunction with <code>scapy</code> on Kali Linux as it is not installed.  Run <code>apt-get install python-pcapy</code></p>
+
+<p>If you go web browsing in the virtual machine with the alarm running, you will notice the alarm will go off...</p>
+
+<h3>Testing Your Tool</h3>
 <p>Your tool must be able to detect the usernames and passwords sent in-the-clear in <code><a href="http://www.cs.tufts.edu/comp/116/set1.pcap">set1.pcap</a></code>, <code><a href="http://www.cs.tufts.edu/comp/116/set2.pcap">set2.pcap</a></code>, and <code><a href="http://www.cs.tufts.edu/comp/116/set3.pcap">set3.pcap</a></code> from the PCAPs lab.</p>
 
-<h2>References</h2>
+<h3>References</h3>
 <ul>
 	<li><a href="https://docs.python.org/2.7/tutorial/" target="_blank">Official Python tutorial (Python 2.7)</a></li>
 	<li>List of all the standard built-in Python libraries: <a href="https://docs.python.org/2.7/library/index.html" target="_blank">https://docs.python.org/2.7/library/index.html</a></li>
